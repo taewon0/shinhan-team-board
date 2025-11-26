@@ -19,10 +19,7 @@ public class BoardDAO {
     private int boardSeq = 1;
 
     
-    public static void main(String[] args) {
-    	BoardDAO dao = new BoardDAO();
-		dao.addBoard("제목", "텍스트");
-	}
+
     
     
     public BoardDTO addBoard(String title, String content) {
