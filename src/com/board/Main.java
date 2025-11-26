@@ -10,7 +10,7 @@ public class Main {
 
         MainView mainView = new MainView();
         BoardController boardController = new BoardController();
-        CommentController commentController = new CommentController(boardController.getDAO());
+        CommentController commentController = new CommentController(boardController.getService());
 
         while (true) {
             int menu = mainView.mainMenu();
