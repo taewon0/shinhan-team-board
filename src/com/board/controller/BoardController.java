@@ -1,7 +1,12 @@
 package com.board.controller;
 
 
+import java.util.List;
+
+import com.board.dto.BoardDTO;
+import com.board.dto.CommentDTO;
 import com.board.service.BoardService;
+import com.board.service.CommentService;
 import com.board.view.BoardView;
 
 public class BoardController {
@@ -9,6 +14,8 @@ public class BoardController {
     private BoardService boardService = new BoardService();
     private BoardView boardView = new BoardView();
 
+    private CommentService commentService = new CommentService();
+    
     public void addBoard() {
         String title = boardView.inputTitle();
         String content = boardView.inputContent();
@@ -35,6 +42,9 @@ public class BoardController {
 
 	public void contentsBoard() {
 		int id = boardView.inputBoardId();
-		boardView.showBoardContents(boardService.getBoard(id));
+		BoardDTO dto = boardService.getBoard(id);
+		List<CommentDTO> list = commentService.findByBoardId(id);
+		dto.setComments(list);
+		boardView.showBoardContents(dto);
 	}
 }
