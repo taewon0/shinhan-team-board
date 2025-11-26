@@ -1,7 +1,10 @@
 package com.board.service;
 
+import java.util.List;
+
 import com.board.dao.CommentDAO;
 import com.board.dto.BoardDTO;
+import com.board.dto.CommentDTO;
 
 public class CommentService {
 
@@ -17,6 +20,10 @@ public class CommentService {
 
 	public boolean deleteComment(BoardDTO board, int commentId) {
 		return commentDAO.deleteComment(board, commentId);
+	}
+	
+	public List<CommentDTO> findByBoardId(int id) {
+		return commentDAO.findByBoardId(id);
 	}
 	
 }
