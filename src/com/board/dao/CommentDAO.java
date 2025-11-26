@@ -14,12 +14,6 @@ import com.board.dto.CommentDTO;
 import com.board.util.DBUtil;
 
 public class CommentDAO {
-	
-	public static void main(String[] args) {
-		CommentDAO dao = new CommentDAO();
-		BoardDTO b = new BoardDTO(2, null, null);
-		dao.updateComment(b, 3, "ssssss");
-	}
 
     public void addComment(BoardDTO board, String content) {
     	Connection conn = null;
