@@ -1,15 +1,14 @@
 package com.board.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentDTO {
     private int id;
+    private int board_id;
     private String content;
-
-    public CommentDTO(int id, String content) {
-        this.id = id;
-        this.content = content;
-    }
-
-    public int getId() { return id; }
-    public String getContent() { return content; }
-    public void setContent(String content) { this.content = content; }
 }
