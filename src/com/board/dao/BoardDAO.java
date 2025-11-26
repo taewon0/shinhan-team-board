@@ -16,13 +16,12 @@ public class BoardDAO {
 	
 	
     private List<BoardDTO> boards = new ArrayList<>();
-    private int boardSeq = 1;
 
     
 
     
     
-    public BoardDTO addBoard(String title, String content) {
+    public void addBoard(String title, String content) {
     	//id(seq), title, content
     	Connection conn = null;
     	PreparedStatement st = null;
@@ -41,9 +40,6 @@ public class BoardDAO {
 		} finally {
 			DBUtil.dbDisconnect(conn, st, null);
 		}
-    	BoardDTO board = new BoardDTO(boardSeq, title, content);
-        boards.add(board);
-        return board;
     }
 
     public boolean deleteBoard(int id) {
@@ -55,14 +51,16 @@ public class BoardDAO {
 			st = conn.prepareStatement(sql);
 			
 			st.setInt(1, id);
-			st.executeUpdate();
+			if(st.executeUpdate() != 0) {
+				return true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DBUtil.dbDisconnect(conn, st, null);
 		}
-        return boards.removeIf(b -> b.getId() == id);
+        return false;
     }
 
     public BoardDTO getBoard(int id) {
@@ -72,14 +70,15 @@ public class BoardDAO {
     	ResultSet rs = null;
     	String sql = "select * from board where id = ?";
     	
+    	BoardDTO dto = null;
+    	
     	try {
 			conn = DBUtil.dbConnect();
 			st = conn.prepareStatement(sql);
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			rs.next();
-			BoardDTO dto = new BoardDTO(rs.getInt("id"), rs.getString("title"), rs.getString("content"));
-			boards.add(dto);
+			dto = new BoardDTO(rs.getInt("id"), rs.getString("title"), rs.getString("content"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,10 +86,7 @@ public class BoardDAO {
 			DBUtil.dbDisconnect(conn, st, null);
 		}
     	
-        return boards.stream()
-                .filter(b -> b.getId() == id)
-                .findFirst()
-                .orElse(null);
+        return dto;
     }
 
     public List<BoardDTO> getAllBoards() {
