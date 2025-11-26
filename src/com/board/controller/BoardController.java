@@ -32,4 +32,9 @@ public class BoardController {
     public BoardDAO getDAO() {
         return boardDAO;
     }
+
+	public void contentsBoard() {
+		int id = boardView.inputBoardId();
+		boardView.showBoardContents(boardDAO.getBoard(id));
+	}
 }
