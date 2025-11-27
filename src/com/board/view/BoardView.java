@@ -13,27 +13,27 @@ public class BoardView {
     private Scanner sc = new Scanner(System.in);
 
     public String inputTitle() {
-        System.out.print("제목: ");
+        System.out.print(">> [제목]을 입력하세요 : ");
         return sc.nextLine();
     }
 
     public String inputContent() {
-        System.out.print("내용: ");
+        System.out.print(">> [내용]을 입력하세요 : ");
         return sc.nextLine();
     }
 
     public int inputBoardId() {
-        System.out.print("게시글 번호 입력: ");
+        System.out.print(">> [게시글 번호]를 입력하세요 : ");
         return Integer.parseInt(sc.nextLine());
     }
 
     public int inputCommentId() {
-        System.out.print("댓글 번호 입력: ");
+        System.out.print(">> [댓글 번호]를 입력하세요 : ");
         return Integer.parseInt(sc.nextLine());
     }
 
     public String inputComment() {
-        System.out.print("댓글 내용: ");
+        System.out.print(">> 댓글 내용을 입력하세요 : ");
         return sc.nextLine();
     }
 
