@@ -13,10 +13,6 @@ import com.board.util.DBUtil;
 
 
 public class BoardDAO {
-	
-	
-    private List<BoardDTO> boards = new ArrayList<>();
-
     
 
     
@@ -90,6 +86,7 @@ public class BoardDAO {
     }
 
     public List<BoardDTO> getAllBoards() {
+    	List<BoardDTO> boards = new ArrayList<>();
     	Connection conn = null;
     	Statement st = null;
     	ResultSet rs = null;
