@@ -18,22 +18,22 @@ public class BoardView {
     }
 
     public String inputContent() {
-        System.out.print("게시물의 내용을 입력하세요: ");
+        System.out.print(">> [내용]을 입력하세요 : ");
         return sc.nextLine();
     }
 
     public int inputBoardId() {
-        System.out.print("게시글 번호 입력: ");
+        System.out.print(">> [게시글 번호]를 입력하세요 : ");
         return Integer.parseInt(sc.nextLine());
     }
 
     public int inputCommentId() {
-        System.out.print("댓글 번호 입력: ");
+        System.out.print(">> [댓글 번호]를 입력하세요 : ");
         return Integer.parseInt(sc.nextLine());
     }
 
     public String inputComment() {
-        System.out.print("댓글 내용: ");
+        System.out.print(">> 댓글 내용을 입력하세요 : ");
         return sc.nextLine();
     }
 
@@ -50,16 +50,16 @@ public class BoardView {
     }
 
 	public void showBoardContents(BoardDTO board) {
-		System.out.println("\n=== 제목 ===");
+		System.out.println("\n******** 제목 ********");
 		System.out.println(board.getTitle());
-		System.out.println("=== 내용 ===");
+		System.out.println("******** 내용 ********");
 		System.out.println(board.getContent());
-		System.out.println("=== 댓글 ===");
+		System.out.println("******** 댓글 ********");
 		if(board.getComments().isEmpty()) {
-			System.out.println("[댓글이 존재하지 않습니다. 댓글을 입력해주세요.]");
+			System.out.println("\n[댓글이 존재하지 않습니다]");
 		} else {
 			for (CommentDTO c : board.getComments()) {
-	            System.out.println("(" + c.getId() + ") " + c.getContent());
+	            System.out.println("[" + c.getId() + "] " + c.getContent());
 	        }
 		}
 	}
