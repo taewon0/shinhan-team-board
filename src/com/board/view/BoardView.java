@@ -38,7 +38,7 @@ public class BoardView {
     }
 
     public void showBoards(List<BoardDTO> boards) {
-        System.out.println("\n=== 게시글 목록 ===");
+        System.out.println("\n******** 게시글 목록 ********");
         for (BoardDTO b : boards) {
             System.out.println(b.getId() + ". " + b.getTitle());
         }
@@ -50,16 +50,16 @@ public class BoardView {
     }
 
 	public void showBoardContents(BoardDTO board) {
-		System.out.println("\n=== 제목 ===");
+		System.out.println("\n******** 제목 ********");
 		System.out.println(board.getTitle());
-		System.out.println("=== 내용 ===");
+		System.out.println("******** 내용 ********");
 		System.out.println(board.getContent());
-		System.out.println("=== 댓글 ===");
+		System.out.println("******** 댓글 ********");
 		if(board.getComments().isEmpty()) {
-			System.out.println("[댓글이 존재하지 않습니다]");
+			System.out.println("\n[댓글이 존재하지 않습니다]");
 		} else {
 			for (CommentDTO c : board.getComments()) {
-	            System.out.println("(" + c.getId() + ") " + c.getContent());
+	            System.out.println("[" + c.getId() + "] " + c.getContent());
 	        }
 		}
 	}
