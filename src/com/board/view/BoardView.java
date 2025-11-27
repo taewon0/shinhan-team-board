@@ -13,7 +13,7 @@ public class BoardView {
     private Scanner sc = new Scanner(System.in);
 
     public String inputTitle() {
-        System.out.print(">> [제목]을 입력하세요 : ");
+        System.out.print("게시물의 제목을 입력하세요: ");
         return sc.nextLine();
     }
 
@@ -38,7 +38,7 @@ public class BoardView {
     }
 
     public void showBoards(List<BoardDTO> boards) {
-        System.out.println("\n******** 게시글 목록 ********");
+        System.out.println("\n\n=== 게시글 목록 ===");
         for (BoardDTO b : boards) {
             System.out.println(b.getId() + ". " + b.getTitle());
         }
