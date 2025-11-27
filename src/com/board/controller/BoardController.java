@@ -26,7 +26,7 @@ public class BoardController {
     public void deleteBoard() {
         int id = boardView.inputBoardId();
         if (boardService.deleteBoard(id)) {
-            boardView.showMessage("게시글 삭제 완료");
+            boardView.showMessage("게시글 삭제 완료!!!!!!!");
         } else {
             boardView.showMessage("해당 게시글이 존재하지 않습니다.");
         }
